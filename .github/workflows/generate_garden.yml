@@ -1,0 +1,36 @@
+name: Update Code Garden Visual
+
+on:
+  schedule:
+    # Runs automatically every hour to refresh the drawing
+    - cron: "0 * * * *"
+  push:
+    branches: ["main"] # Also runs whenever you make a change to main
+  workflow_dispatch: # Allows you to run this manually for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allows the action to save the generated image
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Run Drawing Script
+        run: python draw_garden.py
+
+      - name: Save Drawn Image
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "🎨 Regenerate code-drawn garden"
+          # The file was saved into the 'dist' directory by the python script
+          file_pattern: "dist/garden.svg"
+          # Push the change back to the repository
+          push_options: "--force"
