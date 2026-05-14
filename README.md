@@ -14,8 +14,8 @@
 ### 💖 My GitHub Garden Stats 💖
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=HailieT&show_icons=true&bg_color=fff0f5&title_color=d81159&text_color=4a0404&icon_color=ff5c8a&hide_border=true" alt="Hailie's GitHub Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=HailieT&layout=compact&bg_color=fff0f5&title_color=d81159&text_color=4a0404&icon_color=ff5c8a&hide_border=true" alt="Top Languages" />
+  <img src="https://raw.githubusercontent.com/HailieT/HailieT/main/dist/stats.svg" alt="Hailie's GitHub Stats" />
+  <img src="https://raw.githubusercontent.com/HailieT/HailieT/main/dist/top-langs.svg" alt="Top Languages" />
 </p>
 
 🌷 🌺 🌻 🌹 🌸 🌼 🤍 🌼 🌸 🌹 🌻 🌺 🌷
