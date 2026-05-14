@@ -1,0 +1,39 @@
+name: Generate GitHub Stats
+
+on:
+  schedule:
+    # Runs automatically every 12 hours
+    - cron: "0 */12 * * *"
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allows the bot to save the images
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Generate Floral Stats Card
+        uses: soulteary/github-readme-stats-action@v1.0.0
+        with:
+          card: stats
+          options: 'username=HailieT&show_icons=true&bg_color=fff0f5&title_color=d81159&text_color=4a0404&icon_color=ff5c8a&hide_border=true'
+          path: dist/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Floral Languages Card
+        uses: soulteary/github-readme-stats-action@v1.0.0
+        with:
+          card: top-langs
+          options: 'username=HailieT&layout=compact&bg_color=fff0f5&title_color=d81159&text_color=4a0404&icon_color=ff5c8a&hide_border=true'
+          path: dist/top-langs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save Drawn Stats
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "📊 Regenerate local stats cards"
+          file_pattern: "dist/*.svg"
